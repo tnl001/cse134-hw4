@@ -1,0 +1,204 @@
+* {
+    margin: 0 0 0 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+:root {
+    --main-width: 50vw;
+    --main-width-smallscreen: 85vw;
+    --nav-height: 7vh;
+    --nav-link-width: 10vw;
+    --nav-link-height-widescreen: 100%;
+    --nav-link-height-smallscreen: 6vh;
+    --nav-link-color: white;
+    --header-offset-widescreen: 9vh;
+    --about-picture-height: 15em;
+    --about-image-max-width-widescreen: 300px;
+    --about-image-max-width-bigscreen: 320px;
+    --about-main-content-width-widescreen: 47.5%;
+    --about-main-width: 70vw;
+    --about-main-width-smallscreen: 85vw;
+    --about-main-width-bigscreen: 60vw;
+    --about-main-margin: 2em;
+    --projects-table-row-hover-color: rgb(223, 223, 223);
+}
+
+
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100vw;
+}
+
+main {
+    width: var(--main-width);
+}
+
+@media (min-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: black;
+        height: var(--nav-height);
+        width: 100vw;
+        position: fixed;
+        top: 0px;
+        z-index: 9999;
+    }
+
+    nav>a {
+        display: flex;
+        text-decoration: none;
+        color: var(--nav-link-color);
+        width: var(--nav-link-width);
+        height: var(--nav-link-height-widescreen);
+        align-items: center;
+        justify-content: center;
+    }
+
+    h1 {
+        margin-top: var(--header-offset-widescreen);
+        text-align: center;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+    h1 {
+        margin-top: 7vh;
+        text-align: center;
+    }
+
+    main {
+        width: var(--main-width-smallscreen);
+    }
+
+    #hamburger {
+        width: 7.5vw;
+        height: 7.5vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 3px;
+        border: none;
+        background-color: rgb(255, 255, 255);
+        position: fixed;
+        border-radius: 999px;
+        z-index: 9999;
+        background-image: url(../pics/icons8-hamburger-menu-96.png);
+        background-size: contain;
+    }
+
+    #hamburger hr {
+        height: 2px;
+        width: 80%;
+        background-color: black;
+        border: none;
+    }
+
+    #nav-background {
+        height: 100vh;
+        width: 0vw;
+        position: fixed;
+        top: 0px;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: black;
+        height: 100vh;
+        width: 0vw;
+        position: fixed;
+        top: 0px;
+        z-index: 9999;
+        transition: width 0.4s;
+    }
+
+    nav a {
+        display: flex;
+        text-decoration: none;
+        color: var(--nav-link-color);
+        width: 100%;
+        height: var(--nav-link-height-smallscreen);
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        transition-delay: 0.3s;
+    }
+
+    #hamburger:hover+#nav-background {
+        background-color: rgba(190, 190, 190, 0.4);
+        width: 100vw;
+    }
+
+    #hamburger:hover+#nav-background+nav {
+        width: 80vw;
+    }
+
+    #hamburger:hover+#nav-background+nav a {
+        visibility: visible;
+    }
+}
+
+nav a:hover {
+    color: black;
+    background-color: var(--nav-link-color);
+}
+
+#home-header {
+    animation-name: slide-down;
+    animation-duration: 2s;
+}
+
+#home-img {
+    width: 100%;
+    border-radius: 12px;
+    animation-name: slide-in;
+    animation-duration: 2s;
+}
+
+#home-par {
+    animation-name: slide-up;
+    animation-duration: 2s;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translate(-20em);
+    }
+
+    75% {
+        transform: rotate(20deg);
+    }
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translate(0, 100vw);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translate(0, -100vw);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+}
