@@ -11,11 +11,13 @@ function init() {
     let promptOK = document.getElementById("prompt-ok");
     let resultText = document.getElementsByTagName("output")[0];
 
+    // Alert
     alertBtn.addEventListener("click", () => {
         resultText.innerHTML = "";
         alertDialog.showModal();
     });
 
+    // Confirm
     confirmBtn.addEventListener("click", () => {
         resultText.innerHTML = "";
         confirmDialog.showModal();
@@ -25,6 +27,8 @@ function init() {
         resultText.innerHTML = `Confirm result: ${confirmDialog.returnValue}`;
     });
 
+
+    // Prompt
     promptBtn.addEventListener("click", () => {
         resultText.innerHTML = "";
         promptDialog.showModal();
@@ -32,9 +36,14 @@ function init() {
 
     promptInput.addEventListener("change", (event) => {
         promptOK.value = promptInput.value;
+        promptOK.value = DOMPurify.sanitize(promptOK.value);
     });
 
     promptDialog.addEventListener("close", () => {
-        resultText.innerHTML = `Prompt result: ${promptDialog.returnValue}`;
+        if (promptDialog.returnValue != "false" && promptDialog.returnValue != "") {
+            resultText.innerHTML = `Prompt result: ${promptDialog.returnValue}`;
+        } else if (promptDialog.returnValue == "false" || promptDialog.returnValue == "") {
+            resultText.innerHTML = `User didn't enter anything`;
+        }
     });
 }   
