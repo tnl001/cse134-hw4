@@ -4,6 +4,7 @@
  */
 export function renderBlogView(blogData) {
     let deletePrompt = document.getElementById("delete-prompt");
+    let editPrompt = document.getElementById("edit-prompt");
     let blogList = document.getElementById("blog-list");
     let blog = document.createElement("section");
     let blogTitle = document.createElement("h2");
@@ -14,6 +15,9 @@ export function renderBlogView(blogData) {
     let blogBreak = document.createElement("hr");
 
     // Render view
+    blogTitle.setAttribute("id", "blog-title");
+    blogDate.setAttribute("id", "blog-date");
+    blogSummary.setAttribute("id", "blog-summary");
     blogTitle.innerHTML = blogData.postTitle;
     blogDate.innerHTML = blogData.postDate;
     blogSummary.innerHTML = blogData.postSummary;
@@ -29,6 +33,24 @@ export function renderBlogView(blogData) {
         let blogIndex = Array.from(blogDeleteBtn.parentNode.parentNode.children).indexOf(blogDeleteBtn.parentNode);
         blogDeleteOK.value = blogIndex;
     });
+
+    blogEditBtn.addEventListener("click", () => {
+        editPrompt.showModal();
+
+        let blogEditOK = document.getElementById("edit-ok");
+        let blogIndex = Array.from(blogEditBtn.parentNode.parentNode.children).indexOf(blogEditBtn.parentNode);
+        blogEditOK.value = blogIndex;
+
+        // Populate edit form fields
+        let blogToPopulate = blogEditBtn.parentNode;
+        let blogTitleEdit = document.getElementById("post-title-edit");
+        let blogDateEdit = document.getElementById("post-date-edit");
+        let blogSummaryEdit = document.getElementById("post-sum-edit");
+
+        blogTitleEdit.value = blogToPopulate.querySelector("#blog-title").innerHTML;
+        blogDateEdit.value = blogToPopulate.querySelector("#blog-date").innerHTML;
+        blogSummaryEdit.value = blogToPopulate.querySelector("#blog-summary").innerHTML;
+    })
 
     blog.appendChild(blogTitle);
     blog.appendChild(blogDate);
@@ -47,4 +69,16 @@ export function renderBlogView(blogData) {
 export function deleteBlogView(blogIndex) {
     let blogList = document.getElementById("blog-list");
     blogList.removeChild(Array.from(blogList.children)[blogIndex]);
+}
+
+export function editBlogView(blogData, blogIndex) {
+    let blogList = document.getElementById("blog-list");
+    let blogToEdit = Array.from(blogList.children)[blogIndex]
+    let blogTitle = blogToEdit.querySelector("#blog-title");
+    let blogDate = blogToEdit.querySelector("#blog-date");
+    let blogSummary = blogToEdit.querySelector("#blog-summary");
+
+    blogTitle.innerHTML = blogData.postTitle;
+    blogDate.innerHTML = blogData.postDate;
+    blogSummary.innerHTML = blogData.postSummary;
 }

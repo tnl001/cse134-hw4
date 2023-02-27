@@ -1,4 +1,4 @@
-import { createBlog, loadBlog, deleteBlog } from './blogServices.js'
+import { createBlog, loadBlog, deleteBlog, editBlog } from './blogServices.js'
 
 window.addEventListener("load", init);
 
@@ -34,6 +34,22 @@ function init() {
     deletePrompt.addEventListener("close", () => {
         if (deletePrompt.returnValue != "false") {
             deleteBlog(deletePrompt.returnValue);
+        }
+    });
+
+    let editPrompt = document.getElementById("edit-prompt");
+    let postTitleEdit = document.getElementById("post-title-edit");
+    let postDateEEdit = document.getElementById("post-date-edit");
+    let postSummaryEdit = document.getElementById("post-sum-edit");
+    editPrompt.addEventListener("close", () => {
+        let blogData = {
+            "postTitle": postTitleEdit.value,
+            "postDate": postDateEEdit.value,
+            "postSummary": postSummaryEdit.value
+        };
+
+        if (editPrompt.returnValue != "false") {
+            editBlog(blogData, editPrompt.returnValue);
         }
     });
 }

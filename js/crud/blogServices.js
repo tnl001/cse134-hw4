@@ -1,4 +1,4 @@
-import { deleteBlogView, renderBlogView } from "./blogHelpers.js"
+import { deleteBlogView, editBlogView, renderBlogView } from "./blogHelpers.js"
 
 let storage = window.localStorage;
 let buffer = [];
@@ -24,4 +24,10 @@ export function deleteBlog(blogIndex) {
     buffer.splice(blogIndex, 1);
     storage.setItem("blogs", JSON.stringify(buffer));
     deleteBlogView(blogIndex);
+}
+
+export function editBlog(blogData, blogIndex) {
+    buffer[blogIndex] = blogData;
+    storage.setItem("blogs", JSON.stringify(buffer));
+    editBlogView(blogData, blogIndex);
 }
