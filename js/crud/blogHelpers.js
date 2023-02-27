@@ -28,7 +28,6 @@ export function renderBlogView(blogData) {
         let blogDeleteOK = document.getElementById("delete-ok");
         let blogIndex = Array.from(blogDeleteBtn.parentNode.parentNode.children).indexOf(blogDeleteBtn.parentNode);
         blogDeleteOK.value = blogIndex;
-        console.log(blogDeleteOK.value);
     });
 
     blog.appendChild(blogTitle);
