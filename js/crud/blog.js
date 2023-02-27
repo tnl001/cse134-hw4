@@ -1,4 +1,4 @@
-import { createBlog, loadBlog } from './blogServices.js'
+import { createBlog, loadBlog, deleteBlog } from './blogServices.js'
 
 window.addEventListener("load", init);
 
@@ -27,6 +27,13 @@ function init() {
 
         if (addPrompt.returnValue != "false") {
             createBlog(blogData);
+        }
+    });
+
+    let deletePrompt = document.getElementById("delete-prompt");
+    deletePrompt.addEventListener("close", () => {
+        if (deletePrompt.returnValue != "false") {
+            deleteBlog(deletePrompt.returnValue);
         }
     });
 }
