@@ -10,9 +10,9 @@ export function renderBlogView(blogData) {
     let blogTitle = document.createElement("h2");
     let blogDate = document.createElement("time");
     let blogSummary = document.createElement("p");
+    let blogBtnContainer = document.createElement("div");
     let blogDeleteBtn = document.createElement("button");
     let blogEditBtn = document.createElement("button");
-    let blogBreak = document.createElement("hr");
 
     // Check if empty-list message is active
     if (blogList.querySelector("#empty-list") != null) {
@@ -20,6 +20,7 @@ export function renderBlogView(blogData) {
     }
 
     // Render view
+    blog.setAttribute("class", "blog")
     blogTitle.setAttribute("id", "blog-title");
     blogDate.setAttribute("id", "blog-date");
     blogSummary.setAttribute("id", "blog-summary");
@@ -29,13 +30,14 @@ export function renderBlogView(blogData) {
     blogDeleteBtn.innerHTML = "Delete";
     blogEditBtn.innerHTML = "Edit";
 
+    blogBtnContainer.setAttribute("id", "blog-btn-container");
     blogDeleteBtn.setAttribute("id", "delete-btn");
     blogEditBtn.setAttribute("id", "edit-btn");
 
     blogDeleteBtn.addEventListener("click", () => {
         deletePrompt.showModal();
         let blogDeleteOK = document.getElementById("delete-ok");
-        let blogIndex = Array.from(blogDeleteBtn.parentNode.parentNode.children).indexOf(blogDeleteBtn.parentNode);
+        let blogIndex = Array.from(blogDeleteBtn.parentNode.parentNode.parentNode.children).indexOf(blogDeleteBtn.parentNode.parentNode);
         blogDeleteOK.value = blogIndex;
     });
 
@@ -43,11 +45,11 @@ export function renderBlogView(blogData) {
         editPrompt.showModal();
 
         let blogEditOK = document.getElementById("edit-ok");
-        let blogIndex = Array.from(blogEditBtn.parentNode.parentNode.children).indexOf(blogEditBtn.parentNode);
+        let blogIndex = Array.from(blogEditBtn.parentNode.parentNode.parentNode.children).indexOf(blogEditBtn.parentNode.parentNode);
         blogEditOK.value = blogIndex;
 
         // Populate edit form fields
-        let blogToPopulate = blogEditBtn.parentNode;
+        let blogToPopulate = blogEditBtn.parentNode.parentNode;
         let blogTitleEdit = document.getElementById("post-title-edit");
         let blogDateEdit = document.getElementById("post-date-edit");
         let blogSummaryEdit = document.getElementById("post-sum-edit");
@@ -57,12 +59,13 @@ export function renderBlogView(blogData) {
         blogSummaryEdit.value = blogToPopulate.querySelector("#blog-summary").innerHTML;
     })
 
+    blogBtnContainer.appendChild(blogDeleteBtn);
+    blogBtnContainer.appendChild(blogEditBtn);
+
     blog.appendChild(blogTitle);
     blog.appendChild(blogDate);
     blog.appendChild(blogSummary);
-    blog.appendChild(blogDeleteBtn);
-    blog.appendChild(blogEditBtn);
-    blog.appendChild(blogBreak);
+    blog.appendChild(blogBtnContainer);
 
     blogList.appendChild(blog);
 }
