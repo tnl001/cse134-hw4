@@ -1,7 +1,18 @@
-import { deleteBlogView, editBlogView, renderBlogView } from "./blogHelpers.js"
+import { deleteBlogView, editBlogView, renderBlogView, renderEmptyView } from "./blogHelpers.js"
 
 let storage = window.localStorage;
-let buffer = [];
+let buffer = [
+    {
+        "postTitle": "Blog 1",
+        "postDate": "2023-02-04",
+        "postSummary": "This is my first blog. I will be creating more blogs!"
+    },
+    {
+        "postTitle": "Blog 2",
+        "postDate": "2023-02-23",
+        "postSummary": "This is my second blog. More blogs coming soon!"
+    }
+];
 if (storage.getItem("blogs") == null) {
     storage.setItem("blogs", JSON.stringify(buffer));
 }
@@ -14,16 +25,22 @@ export function createBlog(blogData) {
 }
 
 export function loadBlog() {
-    let blogs = JSON.parse(storage.getItem("blogs"));
-    blogs.forEach(blogData => {
-        renderBlogView(blogData);
-    });
+    if (buffer.length == 0) {
+        renderEmptyView();
+    } else {
+        buffer.forEach(blogData => {
+            renderBlogView(blogData);
+        });
+    }
 }
 
 export function deleteBlog(blogIndex) {
     buffer.splice(blogIndex, 1);
     storage.setItem("blogs", JSON.stringify(buffer));
     deleteBlogView(blogIndex);
+    if (buffer.length == 0) {
+        renderEmptyView();
+    }
 }
 
 export function editBlog(blogData, blogIndex) {

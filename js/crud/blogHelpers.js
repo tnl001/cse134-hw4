@@ -14,13 +14,18 @@ export function renderBlogView(blogData) {
     let blogEditBtn = document.createElement("button");
     let blogBreak = document.createElement("hr");
 
+    // Check if empty-list message is active
+    if (blogList.querySelector("#empty-list") != null) {
+        blogList.removeChild(blogList.querySelector("#empty-list"));
+    }
+
     // Render view
     blogTitle.setAttribute("id", "blog-title");
     blogDate.setAttribute("id", "blog-date");
     blogSummary.setAttribute("id", "blog-summary");
-    blogTitle.innerHTML = blogData.postTitle;
-    blogDate.innerHTML = blogData.postDate;
-    blogSummary.innerHTML = blogData.postSummary;
+    blogTitle.innerText = blogData.postTitle;
+    blogDate.innerText = blogData.postDate;
+    blogSummary.innerText = blogData.postSummary;
     blogDeleteBtn.innerHTML = "Delete";
     blogEditBtn.innerHTML = "Edit";
 
@@ -71,6 +76,11 @@ export function deleteBlogView(blogIndex) {
     blogList.removeChild(Array.from(blogList.children)[blogIndex]);
 }
 
+/**
+ * Helper function to render view after editing
+ * @param {*} blogData 
+ * @param {*} blogIndex 
+ */
 export function editBlogView(blogData, blogIndex) {
     let blogList = document.getElementById("blog-list");
     let blogToEdit = Array.from(blogList.children)[blogIndex]
@@ -78,7 +88,15 @@ export function editBlogView(blogData, blogIndex) {
     let blogDate = blogToEdit.querySelector("#blog-date");
     let blogSummary = blogToEdit.querySelector("#blog-summary");
 
-    blogTitle.innerHTML = blogData.postTitle;
-    blogDate.innerHTML = blogData.postDate;
-    blogSummary.innerHTML = blogData.postSummary;
+    blogTitle.innerText = blogData.postTitle;
+    blogDate.innerText = blogData.postDate;
+    blogSummary.innerText = blogData.postSummary;
+}
+
+/**
+ * Helper function to render message when blog list is empty
+ */
+export function renderEmptyView() {
+    let blogList = document.getElementById("blog-list");
+    blogList.innerHTML = "<p id='empty-list'>No blogs currently listed!</p>";
 }
