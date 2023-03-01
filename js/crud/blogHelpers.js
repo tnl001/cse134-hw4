@@ -27,12 +27,10 @@ export function renderBlogView(blogData) {
     blogTitle.innerText = blogData.postTitle;
     blogDate.innerText = blogData.postDate;
     blogSummary.innerText = blogData.postSummary;
-    blogDeleteBtn.innerHTML = "Delete";
-    blogEditBtn.innerHTML = "Edit";
 
-    blogBtnContainer.setAttribute("id", "blog-btn-container");
-    blogDeleteBtn.setAttribute("id", "delete-btn");
-    blogEditBtn.setAttribute("id", "edit-btn");
+    blogBtnContainer.setAttribute("class", "blogBtnContainer");
+    blogDeleteBtn.setAttribute("class", "deleteBtn");
+    blogEditBtn.setAttribute("class", "editBtn");
 
     blogDeleteBtn.addEventListener("click", () => {
         deletePrompt.showModal();
@@ -59,8 +57,9 @@ export function renderBlogView(blogData) {
         blogSummaryEdit.value = blogToPopulate.querySelector("#blog-summary").innerHTML;
     })
 
-    blogBtnContainer.appendChild(blogDeleteBtn);
     blogBtnContainer.appendChild(blogEditBtn);
+    blogBtnContainer.appendChild(blogDeleteBtn);
+
 
     blog.appendChild(blogTitle);
     blog.appendChild(blogDate);

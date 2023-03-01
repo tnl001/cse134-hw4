@@ -94,7 +94,7 @@ main {
         position: fixed;
         border-radius: 999px;
         z-index: 9999;
-        background-image: url(../pics/icons8-hamburger-menu-96.png);
+        background-image: url(../pics/baseline_menu_black_48dp.png);
         background-size: contain;
     }
 
