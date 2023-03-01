@@ -46,6 +46,7 @@ dialog>form textarea:focus {
 #detail-prompt #blog-detail-summary {
     margin-left: 20px;
     margin-right: 20px;
+    overflow-wrap: break-word;
 }
 
 .blog #blog-summary {
