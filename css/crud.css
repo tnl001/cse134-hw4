@@ -49,6 +49,10 @@ dialog>form textarea:focus {
     overflow-wrap: break-word;
 }
 
+#detail-prompt #blog-detail-titleL:focus {
+    outline: none;
+}
+
 .blog #blog-summary {
     overflow: hidden;
     white-space: nowrap;
