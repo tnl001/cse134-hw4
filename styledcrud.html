@@ -7,7 +7,7 @@
 
     <title>Styled CRUD</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cure53/DOMPurify/dist/purify.js"></script>
-    <script type="module" src="js/crud/blog.js"></script>
+    <script type="module" src="js/styled-crud/styledBlog.js"></script>
     <style></style>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/crud.css">
@@ -31,20 +31,21 @@
 
     <main>
         <div id="blog-list"></div>
-        <button id="add-btn">Add</button>
+        <button id="add-btn"></button>
 
         <!-- Prompt dialog -->
         <dialog id="add-prompt">
             <form id="add-form" method="dialog">
+                <h2>Add Blog</h2>
                 <p>Post Title</p>
                 <input id="post-title" name="post-title" type="text">
                 <p>Post Date</p>
                 <input id="post-date" name="post-date" type="date">
                 <p>Post Summary</p>
                 <textarea id="post-sum" name="post-sum"></textarea>
-                <div>
-                    <button value="false">Cancel</button>
+                <div class="dialog-btn-container">
                     <button id="post-submit" value="true">Submit</button>
+                    <button id="post-cancel" value="false">Cancel</button>
                 </div>
             </form>
         </dialog>
@@ -53,9 +54,9 @@
         <dialog id="delete-prompt">
             <form method="dialog">
                 <p>Delete blog?</p>
-                <div>
-                    <button id="delete-cancel" value="false">Cancel</button>
+                <div class="dialog-btn-container">
                     <button id="delete-ok" value="true">OK</button>
+                    <button id="delete-cancel" value="false">Cancel</button>
                 </div>
             </form>
         </dialog>
@@ -63,15 +64,16 @@
         <!-- Edit dialog -->
         <dialog id="edit-prompt">
             <form id="edit-form" method="dialog">
+                <h2>Edit Blog</h2>
                 <p>Post Title</p>
                 <input id="post-title-edit" name="post-title-edit" type="text">
                 <p>Post Date</p>
                 <input id="post-date-edit" name="post-date-edit" type="date">
                 <p>Post Summary</p>
                 <textarea id="post-sum-edit" name="post-sum-edit"></textarea>
-                <div>
-                    <button id="edit-cancel" value="false">Cancel</button>
+                <div class="dialog-btn-container">
                     <button id="edit-ok" value="true">Save</button>
+                    <button id="edit-cancel" value="false">Cancel</button>
                 </div>
             </form>
         </dialog>

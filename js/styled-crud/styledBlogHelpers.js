@@ -32,9 +32,6 @@ export function renderBlogView(blogData) {
     blogDeleteBtn.setAttribute("class", "deleteBtn");
     blogEditBtn.setAttribute("class", "editBtn");
 
-    blogDeleteBtn.innerHTML = "Delete";
-    blogEditBtn.innerHTML = "Edit";
-
     blogDeleteBtn.addEventListener("click", () => {
         deletePrompt.showModal();
         let blogDeleteOK = document.getElementById("delete-ok");
