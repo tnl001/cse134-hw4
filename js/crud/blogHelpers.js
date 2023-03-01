@@ -58,7 +58,7 @@ export function renderBlogView(blogData) {
         blogTitleEdit.value = blogToPopulate.querySelector("#blog-title").innerHTML;
         blogDateEdit.value = blogToPopulate.querySelector("#blog-date").innerHTML;
         blogSummaryEdit.value = blogToPopulate.querySelector("#blog-summary").innerHTML;
-    })
+    });
 
     blogBtnContainer.appendChild(blogEditBtn);
     blogBtnContainer.appendChild(blogDeleteBtn);

@@ -13,6 +13,7 @@ export function renderBlogView(blogData) {
     let blogBtnContainer = document.createElement("div");
     let blogDeleteBtn = document.createElement("button");
     let blogEditBtn = document.createElement("button");
+    let blogViewBtn = document.createElement("button");
 
     // Check if empty-list message is active
     if (blogList.querySelector("#empty-list") != null) {
@@ -31,6 +32,12 @@ export function renderBlogView(blogData) {
     blogBtnContainer.setAttribute("class", "blogBtnContainer");
     blogDeleteBtn.setAttribute("class", "deleteBtn");
     blogEditBtn.setAttribute("class", "editBtn");
+    blogViewBtn.setAttribute("class", "viewBtn");
+
+    blogViewBtn.addEventListener("click", (event) => {
+        renderDetailView(blogData);
+        event.preventDefault();
+    });
 
     blogDeleteBtn.addEventListener("click", () => {
         deletePrompt.showModal();
@@ -57,6 +64,7 @@ export function renderBlogView(blogData) {
         blogSummaryEdit.value = blogToPopulate.querySelector("#blog-summary").innerHTML;
     })
 
+    blogBtnContainer.appendChild(blogViewBtn);
     blogBtnContainer.appendChild(blogEditBtn);
     blogBtnContainer.appendChild(blogDeleteBtn);
 
@@ -101,4 +109,19 @@ export function editBlogView(blogData, blogIndex) {
 export function renderEmptyView() {
     let blogList = document.getElementById("blog-list");
     blogList.innerHTML = "<p id='empty-list'>No blogs currently listed!</p>";
+}
+
+
+export function renderDetailView(blogData) {
+    let detailView = document.getElementById("detail-prompt");
+    let detailViewTitle = document.getElementById("blog-detail-title");
+    let detailViewDate = document.getElementById("blog-detail-date");
+    let detailViewSummary = document.getElementById("blog-detail-summary");
+
+    detailViewTitle.innerText = blogData.postTitle;
+    detailViewDate.innerText = blogData.postDate;
+    detailViewSummary.innerText = blogData.postSummary;
+
+    detailView.showModal();
+    detailViewTitle.autofocus;
 }

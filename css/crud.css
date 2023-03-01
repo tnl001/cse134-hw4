@@ -22,6 +22,38 @@ dialog>form textarea:focus {
     outline: none;
 }
 
+#detail-prompt {
+    max-height: 70vh;
+}
+
+#detail-prompt>#detail-form .dialog-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#detail-close {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: white;
+    background-image: url(../pics/outline_close_black_48dp.png);
+    background-size: contain;
+}
+
+#detail-prompt #blog-detail-title,
+#detail-prompt #blog-detail-date,
+#detail-prompt #blog-detail-summary {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.blog #blog-summary {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .blogBtnContainer {
     display: flex;
     flex-direction: row;
@@ -44,6 +76,15 @@ dialog>form textarea:focus {
     border: none;
     background-color: white;
     background-image: url(../pics/outline_delete_black_48dp.png);
+    background-size: contain;
+}
+
+.viewBtn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: white;
+    background-image: url(../pics/outline_visibility_black_48dp.png);
     background-size: contain;
 }
 
@@ -154,6 +195,16 @@ dialog>form textarea:focus {
         cursor: pointer;
         background-color: black;
         background-image: url(../pics/outline_delete_white_48dp.png);
+    }
+
+    .viewBtn:hover {
+        cursor: pointer;
+        background-color: black;
+        background-image: url(../pics/outline_visibility_white_48dp.png);
+    }
+
+    #detail-close:hover {
+        cursor: pointer;
     }
 }
 
