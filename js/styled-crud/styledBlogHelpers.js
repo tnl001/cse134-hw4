@@ -34,9 +34,10 @@ export function renderBlogView(blogData) {
     blogEditBtn.setAttribute("class", "editBtn");
     blogViewBtn.setAttribute("class", "viewBtn");
 
-    blogViewBtn.addEventListener("click", (event) => {
-        renderDetailView(blogData);
-        event.preventDefault();
+    blogViewBtn.addEventListener("click", () => {
+        // Populate detail view
+        let blogToPopulate = blogViewBtn.parentNode.parentNode;
+        renderDetailView(blogToPopulate);
     });
 
     blogDeleteBtn.addEventListener("click", () => {
@@ -118,10 +119,9 @@ export function renderDetailView(blogData) {
     let detailViewDate = document.getElementById("blog-detail-date");
     let detailViewSummary = document.getElementById("blog-detail-summary");
 
-    detailViewTitle.innerText = blogData.postTitle;
-    detailViewDate.innerText = blogData.postDate;
-    detailViewSummary.innerText = blogData.postSummary;
+    detailViewTitle.innerText = blogData.querySelector("#blog-title").innerHTML;;
+    detailViewDate.innerText = blogData.querySelector("#blog-date").innerHTML;;
+    detailViewSummary.innerText = blogData.querySelector("#blog-summary").innerHTML;;
 
     detailView.showModal();
-    detailViewTitle.autofocus;
 }
