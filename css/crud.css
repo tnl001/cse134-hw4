@@ -49,7 +49,7 @@ dialog>form textarea:focus {
     overflow-wrap: break-word;
 }
 
-#detail-prompt #blog-detail-titleL:focus {
+#detail-prompt #blog-detail-title:focus {
     outline: none;
 }
 
