@@ -1,15 +1,25 @@
 @media (min-width: 1280px) {
     main {
-        margin-top: var(--about-main-margin);
         display: flex;
         flex-direction: column;
-        width: var(--about-main-width-bigscreen);
+        width: 100vw;
+        position: absolute;
     }
 
     main div {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        height: 100vh;
+        padding-left: 25vw;
+        padding-right: 25vw;
+        animation-name: pop-in;
+        animation-duration: 1.5s;
+    }
+
+    main>div:nth-child(even) {
+        background-color: black;
+        color: white;
     }
 
     main div p {
@@ -109,5 +119,15 @@
 
     img {
         max-width: var(--about-main-width-smallscreen);
+    }
+}
+
+@keyframes pop-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
