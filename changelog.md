@@ -8,3 +8,5 @@
 - Added `padding-bottom` for `Project` and `Experience` pages
 - Hide overflow scroll on x-axis
 - Moved the hamburger button into a nav-like div
+- Added Google Analytics script to `Home`, `About`, `Experience`, `Projects`, `Project 1`, and `Styled CRUD` pages
+  - Reason: to get an idea of how users interact with my website and how my website performs
