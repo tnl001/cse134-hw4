@@ -275,8 +275,6 @@ main {
 
     #learn-more:hover {
         cursor: pointer;
-        background-color: white;
-        color: black;
     }
 }
 
@@ -299,20 +297,21 @@ main {
         width: var(--main-width-smallscreen);
     }
 
+    #hamburger-nav {
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        background-color: black;
+        position: fixed;
+    }
+
     #hamburger {
         width: 7.5vw;
         height: 7.5vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        row-gap: 3px;
         border: none;
-        background-color: rgb(255, 255, 255);
-        position: fixed;
-        border-radius: 999px;
-        z-index: 9999;
-        background-image: url(../pics/baseline_menu_black_48dp.png);
+        background-color: black;
+        background-image: url(../pics/baseline_menu_white_48dp.png);
         background-size: contain;
     }
 
@@ -399,8 +398,6 @@ main {
 
     #learn-more:hover {
         cursor: pointer;
-        background-color: white;
-        color: black;
     }
 }
 
